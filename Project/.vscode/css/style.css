@@ -1,0 +1,29 @@
+#location{padding-top: 50px;
+    background-Color:lightblue;
+    height: 60px;
+    width:100%;
+    text-align: center;
+}
+
+#logo   
+ {   width:  420px;
+    margin-left: 500px;
+    }
+
+.map
+{position:center;}
+
+.results{text-align: center;}
+
+
+table, th, td {
+    border: 2px solid black;
+    
+
+    font-size: 24px;
+     }
+
+.footer{
+    font-weight: Bold;
+    text-align: center; }
+
