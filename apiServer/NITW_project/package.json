@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace NITW_project-client build",
+    "dev": "yarn workspace NITW_project-server dev",
+    "dev:debug": "yarn workspace NITW_project-server dev:debug",
+    "heroku-postbuild": "yarn workspace NITW_project-client build",
+    "start": "yarn workspace NITW_project-server start",
+    "dev:cypress": "yarn workspace NITW_project-server dev:e2e",
+    "e2e:open": "yarn workspace NITW_project-e2e e2e:open",
+    "e2e:run": "yarn workspace NITW_project-e2e e2e:run"
+  },
+  "engines": {
+    "node": "17.5"
+  }
+}
