@@ -1,5 +1,5 @@
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 
 function MapContainer(props) {
     const setSelectedCounty = props.setSelectedCounty
@@ -26,7 +26,15 @@ function MapContainer(props) {
             activeMarker: marker,
             showingInfoWindow: true
         })
-        setSelectedCounty(props)
+        setSelectedCounty({
+            id: props.id,
+            state: props.state,
+            county: props.county,
+            county_code: props.county_code,
+            score: props.score,
+            maps: props.maps,
+            position: props.position
+          })
         
     }
 
@@ -40,11 +48,28 @@ function MapContainer(props) {
         }
         setSelectedCounty({
             id: "",
-            state: "",
-            county: "",
-            county_code: 0,
-            score: 0,
-            maps: [],
+            state: "-------",
+            county: "---",
+            county_code: '--',
+            score: '-',
+            maps: [
+                {
+                  title: '',
+                  url: ''
+                },
+                {
+                  title: '',
+                  url: ''
+                },
+                {
+                  title: '',
+                  url: ''
+                },
+                {
+                  title: '',
+                  url: ''
+                }
+            ],   
             position: {}
         })
     }
@@ -53,12 +78,18 @@ function MapContainer(props) {
         return(
         <Marker id={countyData.id}
                 onClick={onMarkerClick}
-                name={countyData.county}
+                state={countyData.state}
+                county={countyData.county}
+                name={`${countyData.county}
+                Score:\n${countyData.score}`}
+                score={countyData.score}
+                county_code={countyData.county_code}
+                maps={countyData.maps}
                 position={countyData.position}
         />)
     })
 
-    const mapStyle={display: "block", height: "450px", width: "600px"}
+    const mapStyle={margin: "25%", display: "block", height: "450px", width: "600px"}
 
     return (
       <Map  

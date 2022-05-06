@@ -1,6 +1,8 @@
 import {Map, InfoWindow, Marker} from 'google-maps-react';
 import React, { useState, useEffect } from 'react';
 import GoogleApiWrapper from './MyMapComponent';
+import InfoBox from './InfoBoxComponent';
+import RankingList from './OrderedListComponent';
 
 
 function App() {
@@ -12,7 +14,12 @@ function App() {
       county: 'Norfolk',
       county_code: 25021,
       score: 0,
-      maps: [],
+      maps: [
+        {
+          title: 'Cat',
+          url: 'https://animalpath.org/wp-content/uploads/2021/02/Do-Cats-Have-Belly-Buttons.jpg'
+        }
+      ],
       position: {lat:42.1667652, lng:-71.2494989}
     },
     {
@@ -28,11 +35,28 @@ function App() {
 
   const [selectedCounty, setSelectedCounty] = useState({
     id: "",
-    state: "",
-    county: "",
-    county_code: 0,
-    score: 0,
-    maps: [],
+    state: "-------",
+    county: "---",
+    county_code: '--',
+    score: '-',
+    maps: [
+      {
+        title: '',
+        url: ''
+      },
+      {
+        title: '',
+        url: ''
+      },
+      {
+        title: '',
+        url: ''
+      },
+      {
+        title: '',
+        url: ''
+      }
+    ],
     position: {}
   })
 
@@ -44,6 +68,12 @@ function App() {
          countyData={countyData}
          selectedCounty={selectedCounty}
          setSelectedCounty={setSelectedCounty}/>
+      <RankingList 
+         countyData={countyData}
+         selectedCounty={selectedCounty}
+         setSelectedCounty={setSelectedCounty}/>
+      <InfoBox 
+         selectedCounty={selectedCounty}/>
     </div>
   );
 }
